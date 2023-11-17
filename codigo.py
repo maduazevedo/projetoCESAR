@@ -120,7 +120,7 @@ if __name__ == "__main__":
         if escolha == "1":
             nome_produto = obter_input("Digite o nome do produto: ")
             quantidade_maxima = int(obter_input("Digite a quantidade máxima: "))
-            quantidade_inicial = int(obter_input("Digite a quantidade inicial (opcional, pressione Enter para 0): ") or 0)
+            quantidade_inicial = int(int(obter_input("Digite a quantidade inicial (opcional, pressione Enter para 0): ") or 0)/2)
 
             produto = Produto(nome_produto, quantidade_maxima, quantidade_inicial=quantidade_inicial)
             estoque.adicionar_produto(produto)
