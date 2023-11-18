@@ -1,0 +1,9 @@
+CNPJ: 345
+ Empresa: ade
+ Senha dfd
+CNPJ: 5463636448
+ Empresa: dweifgiwfgi
+ Senha dvcwyvfyfgwuf
+CNPJ: cnpj
+ Empresa: aaaa
+ Senha aaaa
