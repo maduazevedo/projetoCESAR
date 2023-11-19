@@ -148,3 +148,5 @@ while True:
         
     elif escolha == "4":
         print("menu de carlos")
+        
+    #FALTA INTEGRAR ESSE COD COM O MENU
