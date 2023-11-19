@@ -42,7 +42,7 @@ def update_empresa():
                         empresa = input("Digite o novo nome: ")
                         senha = input("Digite a nova senha: ")
                         #atualização:
-                        linha = (f'\nCNPJ: {cnpj} Empresa: {empresa} Senha: {senha}\n')
+                        linha = (f'{cnpj} {empresa} {senha}\n')
                         arquivo.write(linha)
                         print("Empresa atualizada com sucesso!")
                     else:
@@ -75,22 +75,6 @@ def delet_empresa():
     except FileNotFoundError:
         print("Arquivo de empresas não encontrado.")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Funções para cadastro de usuários CRUD
 def create_usuario():
     nome = input("Digite o nome do usuário: ")
@@ -98,7 +82,7 @@ def create_usuario():
     senha1 = input("Digite a senha do usuário: ")
     with open("usuarios.txt", "a") as arquivo:
         #incremento
-        linha = (f"Nome: {nome}, E-mail: {email}, Senha: {senha1}\n")
+        linha = (f'CNPJ: {cnpj}, E-mail: {empresa}, Senha: {senha}\n')
         arquivo.write(linha)
         print("Seja bem vindo(a)", nome)
 

@@ -1,6 +1,8 @@
 print("LucidApp\n")
 
-#funções para cadastro da empresa CRUD
+
+
+#função create Crud
 
 def create_usuario():
     empresa = input("Digite o nome do seu empreendimento: ")
@@ -10,28 +12,28 @@ def create_usuario():
     
     with open("usuarios.txt", "a") as arquivo:
         #incrementa
-        linha = (f'\n{empresa} CNPJ: {cnpj} Senha: {senha}\n')
+        linha = (f'\n{empresa} {cnpj} {senha}\n')
         arquivo.write(linha)
         print("Cadastro realizado com sucesso!")
 
+#funçao login
 def login():
-    cnpj = input("CNPJ: ")
-    senha = input("Senha: ")
-    encontrado = False
-
     with open("usuarios.txt", "r") as arquivo:
-        for linha in arquivo:
-            dados = linha.strip().split(':')
-            if len(dados) == 3:  # Verifica se há três campos (empresa, CNPJ, senha)
-                empresa, cnpj_armazenado, senha_armazenada = dados
-                if cnpj == cnpj_armazenado and senha == senha_armazenada:
-                    encontrado = True
-                    print("Login bem-sucedido!")
-                    break
-    if not encontrado:
-        print("CNPJ ou senha incorretos. Caso não tenha cadastro, realize-o.")
-        
-        
+        try: 
+            empresa = input("Insira o nome do seu empreendimento: ")
+            cnpj = input("Digite o CNPJ: ")
+            senha = input("Digite a senha (apenas letras): ")
+            linhas = arquivo.readlines()
+            for linha in linhas:
+                info = linha.split()
+                if empresa in info and cnpj in info and senha in info:
+                    print(f'Seja bem vindo(a) {empresa}! Login realizado com sucesso ')
+                else:
+                    print("Informação incorreta \n Caso nao, realize o seu CADASTRO")
+        except FileNotFoundError:
+            print("O arquivo não existe")
+
+#função read cRud
 
 def read_usuarios():
     try:
@@ -46,6 +48,7 @@ def read_usuarios():
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
 
+#função update crUd
 
 def update_usuario():
     cnpj = input("Digite o CNPJ que deseja atualizar: ")
@@ -61,7 +64,7 @@ def update_usuario():
                         empresa = input("Digite o novo nome: ")
                         senha = input("Digite a nova senha: ")
                         #atualização:
-                        linha = (f'\n {empresa} CNPJ: {cnpj} Senha: {senha}\n')
+                        linha = (f'{empresa} {cnpj} {senha}\n')
                         arquivo.write(linha)
                         print("Informações atualizadas com sucesso!")
                     else:
@@ -73,6 +76,7 @@ def update_usuario():
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
 
+#função delet cruD
 
 def delet_usuario():
     cnpj = input("Digite o CNPJ que deseja deletar: ")
@@ -97,11 +101,7 @@ def delet_usuario():
 
 
 
-
-
-
-
-# MENU PRINCIPAL QUE INTERAGE COM O CRUD DE EMPRESAS E USER
+# MENU PRINCIPAL QUE INTERAGE COM AS FUNÇÕES
 while True:
     print("\nEscolha uma opção:")
     print("1. Cadastro de Usuário")
