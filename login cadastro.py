@@ -55,7 +55,7 @@ def update_usuario():
             with open("usuarios.txt", "w") as arquivo:
                 usuario_encontrado = False
                 for linha in linhas:
-                    if cnpj in linhas:
+                    if cnpj in linha:
                         usuario_encontrado = True
                         empresa = input("Digite o novo nome: ")
                         senha = input("Digite a nova senha: ")
@@ -71,7 +71,7 @@ def update_usuario():
             
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
-
+        arquivo.close()
 #função delet cruD
 
 def delet_usuario():
@@ -124,7 +124,7 @@ while True:
             opcao_usuarios = input("Opção: ")
             
             if opcao_usuarios == "6":
-                create_usuario()
+                read_usuarios()
             elif opcao_usuarios == "7":
                 update_usuario()
             elif opcao_usuarios == "8":
@@ -137,4 +137,3 @@ while True:
         
     elif opcao == "4":
         print("menu de carlos")
-

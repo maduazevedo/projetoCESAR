@@ -157,16 +157,18 @@ def delet_usuario():
 while True:
     print("\nEscolha uma opção:")
     print("1. Cadastro de Usuário")
-    print("2. Configurações do Usuário")
-    print("3. Menu")
+    print("2. Cadastro de empresa:")
+    print("3. Configurações da empresa")
+    print("4. Configurações do Usuário")
+    print("5. Menu")
     
     opcao = input("Opção: ")
     
     if opcao == "1":
-        create_usuario
+        create_usuario()
         
     elif opcao == "2":
-        create_usuario()
+        create_empresa()
         
     elif opcao == "3":
         while True:
@@ -201,7 +203,7 @@ while True:
             opcao_usuarios = input("Opção: ")
             
             if opcao_usuarios == "6":
-                create_usuario()
+                read_usuarios()
             elif opcao_usuarios == "7":
                 update_usuario()
             elif opcao_usuarios == "8":
