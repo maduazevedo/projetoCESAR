@@ -7,7 +7,7 @@ print("LucidApp\n")
 def create_usuario():
     empresa = input("Digite o nome do seu empreendimento: ")
     cnpj = input("Digite o CNPJ: ")
-    senha = input("Digite a senha : ")
+    senha = input("Digite a senha (apenas 3 caracteres especiais): ")
     print(f'Olá {empresa}, estamos felizes em te ter conosco!')
     
     with open("usuarios.txt", "a") as arquivo:
@@ -19,27 +19,23 @@ def create_usuario():
 #funçao login
 def login():
     with open("usuarios.txt", "r") as arquivo:
-        try: 
-            empresa = input("Insira o nome do seu empreendimento: ")
-            cnpj = input("Digite o CNPJ: ")
-            senha = input("Digite a senha (apenas letras): ")
-            linhas = arquivo.readlines()
-            for linha in linhas:
-                info = linha.split()
-                if empresa in info and cnpj in info and senha in info:
-                    print(f'Seja bem vindo(a) {empresa}! Login realizado com sucesso ')
-                else:
-                    print("Informação incorreta \n Caso nao, realize o seu CADASTRO")
-        except FileNotFoundError:
-            print("O arquivo não existe")
-
-#função read cRud
+        empresa = input("Digite o nome do seu empreendimento: ")
+        cnpj = input("Digite o CNPJ: ")
+        senha = input("Digite a senha (apenas 3 caracteres especiais): ")
+        linhas=arquivo.readlines()
+        for linha in linhas:
+            info=linha.split()
+    
+        if cnpj in info and senha in info:
+            print(f'\nBem vindo (a), {empresa}!\n')
+        else:
+            print("\nInformação errada\n")
 
 def read_usuarios():
     try:
         with open("usuarios.txt", "r") as arquivo:
             usuarios = arquivo.readlines()
-            if usuario:
+            if usuarios:
                 print("Lista de usuários cadastrados:")
                 for usuario in usuarios:
                     print(usuario, "\n")
