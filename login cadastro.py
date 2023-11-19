@@ -127,24 +127,24 @@ while True:
     elif escolha == "3":
         while True:
             print("\nEscolha uma opção para usuários:")
-            print("6. Listar Usuários")
-            print("7. Atualizar Usuário")
-            print("8. Deletar Usuário")
-            print("9. Voltar")
+            print("5. Listar Usuários")
+            print("6. Atualizar Usuário")
+            print("7. Deletar Usuário")
+            print("8. Voltar")
             
             escolha_usuarios = input("Opção: ")
             
-            if escolha_usuarios == "6":
+            if escolha_usuarios == "5":
                 read_usuarios()
-            elif escolha_usuarios == "7":
+            elif escolha_usuarios == "6":
                 update_usuario()
-            elif escolha_usuarios == "8":
+            elif escolha_usuarios == "7":
                 delet_usuario()
-            elif escolha_usuarios == "9":
+            elif escolha_usuarios == "8":
                 print("Voltando ao menu principal...")
                 break
             else:
-                print("Opção inválida. Escolha uma opção de 6 a 9.")
+                print("Opção inválida. Escolha uma opção de 5 a 8.")
         
     elif escolha == "4":
         print("menu de carlos")
