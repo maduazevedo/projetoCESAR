@@ -1,3 +1,5 @@
+
+
 print("LucidApp\n")
 
 
@@ -14,9 +16,11 @@ def create_usuario():
         #incrementa
         linha = (f'\n{empresa} {cnpj} {senha}\n')
         arquivo.write(linha)
-        print("Cadastro realizado com sucesso!")
+        print("\nCadastro realizado com sucesso!")
+
 
 #funçao login
+
 def login():
     with open("usuarios.txt", "r") as arquivo:
         empresa = input("Digite o nome do seu empreendimento: ")
@@ -32,18 +36,22 @@ def login():
         else:
             print("\nInformação errada\n")
 
+
+#função read cRud
+
 def read_usuarios():
     try:
         with open("usuarios.txt", "r") as arquivo:
             usuarios = arquivo.readlines()
             if usuarios:
-                print("Lista de usuários cadastrados:")
+                print("\nLista de usuários cadastrados:")
                 for usuario in usuarios:
                     print(usuario, "\n")
             else:
-                print("Não há usuários cadastrados.")
+                print("\nNão há usuários cadastrados.")
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
+
 
 #função update crUd
 
@@ -63,16 +71,18 @@ def update_usuario():
                         #atualização:
                         linha = (f'{empresa} {cnpj} {senha}\n')
                         arquivo.write(linha)
-                        print("Informações atualizadas com sucesso!")
+                        print("\nInformações atualizadas com sucesso!")
                     else:
                         arquivo.write(linha)
                         #nao deixa as informações das linhas serem apagadas
         if not usuario_encontrado:
-            print("Usuário não encontrado.")
+            print("\nUsuário não encontrado.")
             
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
         arquivo.close()
+        
+        
 #função delet cruD
 
 def delet_usuario():
@@ -85,7 +95,7 @@ def delet_usuario():
             for linha in linhas:
                 if cnpj in linha:
                     usuario_encontrado = True
-                    print(f"Empresa com CNPJ {cnpj} deletada com sucesso!")
+                    print(f"\nEmpresa com CNPJ {cnpj} deletada com sucesso!")
                 else:
                     arquivo.write(linha)
                     #nao deixa o arquivo ser apagado
@@ -97,8 +107,8 @@ def delet_usuario():
 
 
 
-
 # MENU PRINCIPAL QUE INTERAGE COM AS FUNÇÕES
+
 while True:
     print("\nEscolha uma opção:")
     print("1. Cadastro de Usuário")
@@ -106,15 +116,15 @@ while True:
     print("3. Configurações do Usuário")
     print("4. Menu")
     
-    opcao = input("Opção: ")
+    escolha = input("Opção: ")
     
-    if opcao == "1":
+    if escolha == "1":
         create_usuario()
         
-    elif opcao == "2":
+    elif escolha == "2":
         login()
 
-    elif opcao == "3":
+    elif escolha == "3":
         while True:
             print("\nEscolha uma opção para usuários:")
             print("6. Listar Usuários")
@@ -122,19 +132,19 @@ while True:
             print("8. Deletar Usuário")
             print("9. Voltar")
             
-            opcao_usuarios = input("Opção: ")
+            escolha_usuarios = input("Opção: ")
             
-            if opcao_usuarios == "6":
+            if escolha_usuarios == "6":
                 read_usuarios()
-            elif opcao_usuarios == "7":
+            elif escolha_usuarios == "7":
                 update_usuario()
-            elif opcao_usuarios == "8":
+            elif escolha_usuarios == "8":
                 delet_usuario()
-            elif opcao_usuarios == "9":
+            elif escolha_usuarios == "9":
                 print("Voltando ao menu principal...")
                 break
             else:
                 print("Opção inválida. Escolha uma opção de 6 a 9.")
         
-    elif opcao == "4":
+    elif escolha == "4":
         print("menu de carlos")
