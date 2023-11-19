@@ -26,11 +26,10 @@ def login():
         empresa = input("Digite o nome do seu empreendimento: ")
         cnpj = input("Digite o CNPJ: ")
         senha = input("Digite a senha (apenas 3 caracteres especiais): ")
-        for linhas in arquivo:
-            linhas=arquivo.readlines()
-            for linha in linhas:
-                info=linha.split()
-    
+        linhas=arquivo.readlines()
+        for linha in linhas:
+            info=linha.split()
+            
         if (cnpj and senha) in info:
             print(f'\nBem vindo (a), {empresa}!\n')
         else:
