@@ -1,6 +1,6 @@
 
 
-print("LucidApp\n")
+print("APLICATIVO\n")
 
 
 
