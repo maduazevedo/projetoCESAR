@@ -31,7 +31,7 @@ def login():
             info=linha.split()
             
         if (cnpj and senha) in info:
-            print(f'\nBem vindo (a), {empresa}!\n')
+            print(f'\nBem vindo (a), {empresa}! Login realizado.\n')
         else:
             print("\nInformação errada\n")
 
@@ -41,13 +41,8 @@ def login():
 def read_usuarios():
     try:
         with open("usuarios.txt", "r") as arquivo:
-            usuarios = arquivo.readlines()
-            if usuarios:
-                print("\nLista de usuários cadastrados:")
-                for usuario in usuarios:
-                    print(usuario, "\n")
-            else:
-                print("\nNão há usuários cadastrados.")
+            dadosusuarios = arquivo.read()
+            print(dadosusuarios,"\n")
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
 
@@ -79,6 +74,7 @@ def update_usuario():
             
     except FileNotFoundError:
         print("Arquivo de usuários não encontrado.")
+        
         arquivo.close()
         
         
@@ -87,17 +83,18 @@ def update_usuario():
 def delet_usuario():
     cnpj = input("Digite o CNPJ que deseja deletar: ")
     try:
-        with open("usuarios.txt", "r") as arquivo:
-            linhas = arquivo.readlines()
-            with open("usuarios.txt", "w") as arquivo:
-                usuario_encontrado = False
+        usuario_encontrado = False
+        with open("usuarios.txt", "r") as arquivo_leitura:
+            linhas = arquivo_leitura.readlines()
+
+        with open("usuarios.txt", "w") as arquivo_escrita:
             for linha in linhas:
                 if cnpj in linha:
                     usuario_encontrado = True
                     print(f"\nEmpresa com CNPJ {cnpj} deletada com sucesso!")
                 else:
-                    arquivo.write(linha)
-                    #nao deixa o arquivo ser apagado
+                    arquivo_escrita.write(linha)
+                    
         if not usuario_encontrado:
             print("CNPJ não encontrado.")
             
