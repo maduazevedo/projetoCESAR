@@ -1,25 +1,9 @@
 
-
 print("APLICATIVO\n")
 
 
 
-#função create Crud
-
-def create_usuario():
-    empresa = input("Digite o nome do seu empreendimento: ")
-    cnpj = input("Digite o CNPJ: ")
-    senha = input("Digite a senha (apenas 3 caracteres especiais): ")
-    print(f'Olá {empresa}, estamos felizes em te ter conosco!')
-    
-    with open("usuarios.txt", "a") as arquivo:
-        #incrementa
-        linha = (f'\n{empresa} {cnpj} {senha}\n')
-        arquivo.write(linha)
-        print("\nCadastro realizado com sucesso!")
-
-
-#funçao login
+#funçao login 
 
 def login():
     with open("usuarios.txt", "r") as arquivo:
@@ -34,6 +18,22 @@ def login():
             print(f'\nBem vindo (a), {empresa}! Login realizado.\n')
         else:
             print("\nInformação errada\n")
+
+#função create Crud 
+
+
+def create_usuario():
+    empresa = input("Digite o nome do seu empreendimento: ")
+    cnpj = input("Digite o CNPJ: ")
+    senha = input("Digite a senha (apenas 3 caracteres especiais): ")
+    print(f'Olá {empresa}, estamos felizes em te ter conosco!')
+    
+    with open("usuarios.txt", "a") as arquivo:
+        #incrementa
+        linha = (f'\n{empresa} {cnpj} {senha}\n')
+        arquivo.write(linha)
+        print("\nCadastro realizado com sucesso!")
+
 
 
 #função read cRud
