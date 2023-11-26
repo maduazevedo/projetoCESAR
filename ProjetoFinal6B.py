@@ -105,7 +105,7 @@ def adicionar_produto(estoque):
     }
 
     estoque.append(produto)
-    print(f"Produto {produto['nome']} adicionado ao estoque.")
+    print(f"\nProduto {produto['nome']} adicionado ao estoque.")
 
 
 def adicionar_quantidade_produto(estoque, nome_produto, quantidade, data_validade=None):
@@ -190,15 +190,14 @@ def obter_input(mensagem):
 if __name__ == "__main__":
     estoque = []
 
+#MENU QUE INTERAJE COM FUNÇÕES
+
     while True:
         print("\n1. Cadastro de Usuário")
         print("2. Login de Usuário")
-        print("3. Configurações do Usuário")
-        print("4. Cadastrar produto ao estoque")
-        print("5. Adicionar quantidade a um produto")
-        print("6. Registrar saída de um produto")
-        print("7. Visualizar estado atual do estoque")
-        print("8. Sair")
+        print("3. Menu")
+        print("4. Sair")
+
 
         escolha = obter_input("Escolha uma opção (1/2/3/4/5/6/7/8): ")
 
@@ -210,45 +209,61 @@ if __name__ == "__main__":
 
         elif escolha == "3":
             while True:
-                print("\nEscolha uma opção para usuários:")
-                print("1. Listar Usuários")
-                print("2. Atualizar Usuário")
-                print("3. Deletar Usuário")
-                print("4. Voltar")
+                print("\nEscolha uma opção:")
+                print("\n5. Configurações do Usuário")
+                print("6. Configurações de Produtos")
 
-                escolha_usuarios = input("Opção: ")
+                escolha2 = input("\nOpção: ")
 
-                if escolha_usuarios == "1":
-                    read_usuarios()
-                elif escolha_usuarios == "2":
-                    update_usuario()
-                elif escolha_usuarios == "3":
-                    delet_usuario()
-                elif escolha_usuarios == "4":
-                    print("Voltando ao menu principal...")
-                    break
+                if escolha2 == "5":
+                    while True: 
+                        print("\n1. Listar Usuários")
+                        print("2. Atualizar Usuário")
+                        print("3. Deletar Usuário")
+                        print("4. Voltar")
+                    
+                        escolha21=input("\nOpção: ")
+                        
+                        if escolha21=="1":
+                            read_usuarios()
+                        elif escolha21 == "2":
+                            update_usuario()
+                        elif escolha21 == "3":
+                            delet_usuario()
+                        elif escolha21 == "4":
+                            print("Voltando ao menu principal...")
+                            break
+                        
+                if escolha2 == "6":
+                    while True:
+                        print("\n5. Cadastrar produto ao estoque")
+                        print("6. Adicionar quantidade a um produto")
+                        print("7. Registrar saída de um produto")
+                        print("8. Visualizar estado atual do estoque")
+                        print("9. Voltar")
+                        
+                        escolha22 = input("\nOpção: ")
+                        
+                        if escolha22=="5":
+                            adicionar_produto(estoque)
+                            
+                        elif escolha22 == "6":
+                            nome_produto = obter_input("Digite o nome do produto: ")
+                            quantidade = int(obter_input("Digite a quantidade a ser adicionada: "))
+                            data_validade = obter_input("Digite a data de validade (formato YYYY-MM-DD) ou pressione Enter para nenhum: ")
+                            adicionar_quantidade_produto(estoque, nome_produto, quantidade, data_validade)   
+                            
+                        elif escolha22 == "7":
+                            nome_produto = obter_input("Digite o nome do produto: ")
+                            quantidade = int(obter_input("Digite a quantidade a ser registrada como saída: "))
+                            registrar_saida_produto(estoque, nome_produto, quantidade)
+
+                        elif escolha22 == "8":
+                            exibir_estoque(estoque)
+
+                        elif escolha22 == "9":
+                            print("\nVoltando ao menu principal...")
+                            break
+
                 else:
-                    print("Opção inválida. Escolha uma opção de 1 a 4.")
-
-        elif escolha == "4":
-            adicionar_produto(estoque)
-
-        elif escolha == "5":
-            nome_produto = obter_input("Digite o nome do produto: ")
-            quantidade = int(obter_input("Digite a quantidade a ser adicionada: "))
-            data_validade = obter_input("Digite a data de validade (formato YYYY-MM-DD) ou pressione Enter para nenhum: ")
-            adicionar_quantidade_produto(estoque, nome_produto, quantidade, data_validade)
-
-        elif escolha == "6":
-            nome_produto = obter_input("Digite o nome do produto: ")
-            quantidade = int(obter_input("Digite a quantidade a ser registrada como saída: "))
-            registrar_saida_produto(estoque, nome_produto, quantidade)
-
-        elif escolha == "7":
-            exibir_estoque(estoque)
-
-        elif escolha == "8":
-            break
-
-        else:
-            print("Escolha inválida. Tente novamente.")
+                    print("Escolha inválida. Tente novamente.")   
