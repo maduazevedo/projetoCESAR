@@ -3,11 +3,13 @@ import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 
+print("\nGoodStock")
+
 def create_usuario():
     empresa = input("Digite a Razão Social: ")
     cnpj = input("Digite o CNPJ: ")
-    senha = input("Digite a senha (apenas 3 caracteres especiais): ")
-    print(f'Olá {empresa}, estamos felizes em te ter conosco!')
+    senha = input("Digite a senha: ")
+    print(f'\nOlá {empresa}, estamos felizes em te ter conosco!')
 
     arquivo_nome = f"{cnpj}_usuario.txt"
 
@@ -18,8 +20,9 @@ def create_usuario():
     print("\nCadastro realizado com sucesso!")
 
 def login():
+    empresa = input("Digite a Razão Social: ")
     cnpj = input("Digite o CNPJ: ")
-    senha = input("Digite a senha (apenas 3 caracteres especiais): ")
+    senha = input("Digite a senha: ")
 
     arquivo_nome = f"{cnpj}_usuario.txt"
 
@@ -28,7 +31,7 @@ def login():
             info = arquivo.readline().split()
 
         if (cnpj and senha) in info:
-            print(f'\nBem-vindo (a)! Login realizado.\n')
+            print(f'\nBem-vindo (a), {empresa}! Login realizado.\n')
         else:
             print("\nInformação errada\n")
 
@@ -63,7 +66,7 @@ def update_usuario():
                     senha = input("Digite a nova senha: ")
                     linha = f'{empresa} {cnpj} {senha}\n'
                     arquivo_escrita.write(linha)
-                    print("\nInformações atualizadas com sucesso!")
+                    print(f'\nInformações de {empresa} atualizadas com sucesso!')
                 else:
                     arquivo_escrita.write(linha)
 
@@ -193,8 +196,8 @@ if __name__ == "__main__":
 #MENU QUE INTERAJE COM FUNÇÕES
 
     while True:
-        print("\n1. Cadastro de Usuário")
-        print("2. Login de Usuário")
+        print("\n1. Cadastro")
+        print("2. Login")
         print("3. Menu")
         print("4. Sair")
 
@@ -234,7 +237,7 @@ if __name__ == "__main__":
                             print("Voltando ao menu principal...")
                             break
                         
-                if escolha2 == "6":
+                elif escolha2 == "6":
                     while True:
                         print("\n5. Cadastrar produto ao estoque")
                         print("6. Adicionar quantidade a um produto")
